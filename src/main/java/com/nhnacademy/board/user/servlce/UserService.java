@@ -4,7 +4,7 @@ import com.nhnacademy.board.common.pagenation.Page;
 import com.nhnacademy.board.config.CommonPropertiesConfig;
 import com.nhnacademy.board.exception.IdAlreadyExistException;
 import com.nhnacademy.board.exception.UserNotFoundException;
-import com.nhnacademy.board.user.domain.User;
+import com.nhnacademy.board.entity.User;
 import com.nhnacademy.board.user.domain.UserRequest;
 import com.nhnacademy.board.user.repository.UserRepository;
 import lombok.AllArgsConstructor;

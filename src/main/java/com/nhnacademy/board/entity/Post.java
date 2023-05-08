@@ -1,18 +1,31 @@
-package com.nhnacademy.board.board.domain;
+package com.nhnacademy.board.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "Posts")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Post {
+    @Id
+    @Column(name = "post_id")
     private long id;
     private String title;
     private String content;
+    @Column(name = "writer")
     private String writerUserId;
+    @Column(name = "write_time")
     private LocalDateTime writeTime;
+    @Column(name = "view_count")
     private int viewCount;
 
     public Post(String title, String content, String writerUserId) {

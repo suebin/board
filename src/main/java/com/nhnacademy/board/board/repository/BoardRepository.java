@@ -1,6 +1,6 @@
 package com.nhnacademy.board.board.repository;
 
-import com.nhnacademy.board.board.domain.Post;
+import com.nhnacademy.board.entity.Post;
 import com.nhnacademy.board.common.pagenation.Page;
 
 public interface BoardRepository {

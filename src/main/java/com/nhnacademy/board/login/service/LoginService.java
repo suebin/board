@@ -1,6 +1,6 @@
 package com.nhnacademy.board.login.service;
 
-import com.nhnacademy.board.user.domain.User;
+import com.nhnacademy.board.entity.User;
 import com.nhnacademy.board.user.servlce.UserService;
 import org.springframework.stereotype.Service;
 

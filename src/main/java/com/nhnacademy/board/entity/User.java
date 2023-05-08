@@ -1,13 +1,21 @@
-package com.nhnacademy.board.user.domain;
+package com.nhnacademy.board.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Users")
 @Getter
+@Setter
 @NoArgsConstructor
 @ToString
 public class User {
@@ -15,13 +23,17 @@ public class User {
         ADMIN, USER
     }
 
+    @Id
+    @Column(name = "user_id")
     private String id;
     private String password;
     private String name;
+    @Column(name = "profile_file_name")
     private String profileFileName;
     private Role role;
-
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
     private User(String id, String password, String name, Role role, String profileFileName){
         this.id = id;
         this.password = password;

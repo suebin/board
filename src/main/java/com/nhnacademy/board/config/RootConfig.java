@@ -1,18 +1,21 @@
 package com.nhnacademy.board.config;
 
-import com.nhnacademy.board.board.domain.Post;
+import com.nhnacademy.board.entity.Post;
 import com.nhnacademy.board.board.repository.BoardRepository;
 import com.nhnacademy.board.board.repository.impl.MemoryBoardRepository;
-import com.nhnacademy.board.user.domain.User;
+import com.nhnacademy.board.entity.User;
 import com.nhnacademy.board.user.repository.UserRepository;
 import com.nhnacademy.board.user.repository.impl.MemoryUserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
+
+import javax.sql.DataSource;
 
 @Slf4j
 @Configuration
@@ -26,6 +29,30 @@ public class RootConfig {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
+
+    @Bean
+    public DataSource dataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:~/spring-jpa;DATABASE_TO_UPPER=false;"
+                + "INIT=RUNSCRIPT FROM 'classpath:/script/schema.sql'");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+
+        dataSource.setInitialSize(10);
+        dataSource.setMaxTotal(10);
+        dataSource.setMinIdle(10);
+        dataSource.setMaxIdle(10);
+
+        dataSource.setMaxWaitMillis(1000);
+
+        dataSource.setTestOnBorrow(true);
+        dataSource.setTestOnReturn(true);
+        dataSource.setTestWhileIdle(true);
+
+        return dataSource;
+    }
+
 
     @Bean
     public UserRepository userRepository() {

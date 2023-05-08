@@ -1,6 +1,6 @@
 package com.nhnacademy.board.board.repository.impl;
 
-import com.nhnacademy.board.board.domain.Post;
+import com.nhnacademy.board.entity.Post;
 import com.nhnacademy.board.board.repository.BoardRepository;
 import com.nhnacademy.board.common.pagenation.Page;
 import org.springframework.stereotype.Repository;

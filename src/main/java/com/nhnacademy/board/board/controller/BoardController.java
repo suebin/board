@@ -1,6 +1,6 @@
 package com.nhnacademy.board.board.controller;
 
-import com.nhnacademy.board.board.domain.Post;
+import com.nhnacademy.board.entity.Post;
 import com.nhnacademy.board.board.domain.PostRequest;
 import com.nhnacademy.board.board.service.BoardService;
 import com.nhnacademy.board.common.pagenation.Page;

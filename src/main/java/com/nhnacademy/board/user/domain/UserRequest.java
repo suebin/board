@@ -1,5 +1,6 @@
 package com.nhnacademy.board.user.domain;
 
+import com.nhnacademy.board.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

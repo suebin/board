@@ -1,7 +1,7 @@
 package com.nhnacademy.board.user.repository.impl;
 
 import com.nhnacademy.board.common.pagenation.Page;
-import com.nhnacademy.board.user.domain.User;
+import com.nhnacademy.board.entity.User;
 import com.nhnacademy.board.user.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 

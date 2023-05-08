@@ -2,7 +2,7 @@ package com.nhnacademy.board.login.controller;
 
 import com.nhnacademy.board.login.dto.LoginRequest;
 import com.nhnacademy.board.login.service.LoginService;
-import com.nhnacademy.board.user.domain.User;
+import com.nhnacademy.board.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

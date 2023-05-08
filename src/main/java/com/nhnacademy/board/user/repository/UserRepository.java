@@ -1,7 +1,7 @@
 package com.nhnacademy.board.user.repository;
 
 import com.nhnacademy.board.common.pagenation.Page;
-import com.nhnacademy.board.user.domain.User;
+import com.nhnacademy.board.entity.User;
 
 import java.util.List;
 
