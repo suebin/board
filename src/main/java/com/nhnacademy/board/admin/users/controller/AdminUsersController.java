@@ -1,10 +1,10 @@
 package com.nhnacademy.board.admin.users.controller;
 
-import com.nhnacademy.board.common.pagenation.Page;
 import com.nhnacademy.board.entity.User;
 import com.nhnacademy.board.user.domain.UserRequest;
 import com.nhnacademy.board.user.servlce.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

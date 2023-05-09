@@ -67,16 +67,4 @@ public class EntityManagerTest {
         User user2 = entityManager.find(User.class, "user1");
         assertThat(user2).isEqualTo(user1);
     }
-
-    @Test
-    void test4() {
-        Post post1 = new Post();
-        post1.setTitle("title");
-        post1.setContent("content");
-        post1.setWriteTime(LocalDateTime.now());
-        post1.setWriterUserId("user");
-
-        entityManager.persist(post1);
-        entityManager.flush();
-    }
 }

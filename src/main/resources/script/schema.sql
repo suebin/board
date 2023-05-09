@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS Users
 );
 
 MERGE INTO `Users` KEY ( `user_id` ) VALUES ( 'user', '1234', '유저', 'user.png', 'USER', now());
+MERGE INTO `Users` KEY ( `user_id` ) VALUES ( 'admin', '1234', '관리자', 'admin.png', 'USER', now());
 
 
 CREATE TABLE IF NOT EXISTS Posts

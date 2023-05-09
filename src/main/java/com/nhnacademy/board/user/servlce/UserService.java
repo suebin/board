@@ -1,14 +1,15 @@
 package com.nhnacademy.board.user.servlce;
 
-import com.nhnacademy.board.common.pagenation.Page;
 import com.nhnacademy.board.config.CommonPropertiesConfig;
 import com.nhnacademy.board.exception.IdAlreadyExistException;
 import com.nhnacademy.board.exception.UserNotFoundException;
 import com.nhnacademy.board.entity.User;
 import com.nhnacademy.board.user.domain.UserRequest;
-import com.nhnacademy.board.user.repository.UserRepository;
+import com.nhnacademy.board.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +27,7 @@ public class UserService {
     private final CommonPropertiesConfig commonPropertiesConfig;
 
     public User getUser(String id){
-        User user = userRepository.getUser(id);
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
         if(Objects.isNull(user)){
             throw new UserNotFoundException(id);
         }
@@ -34,7 +35,8 @@ public class UserService {
     }
 
     public Page<User> getUserList(int page, int size){
-        return userRepository.getPagedList(page, size);
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return userRepository.findAll(pageRequest);
     }
 
     public String getProfileImagePath(String id){
@@ -57,17 +59,17 @@ public class UserService {
             }
         }
 
-        if(userRepository.existById(userRequest.getId())){
+        if(userRepository.existsById(userRequest.getId())){
             throw new IdAlreadyExistException(userRequest.getId());
         }
         log.info("fileName:{}",userRequest.getProfileFile().getOriginalFilename());
         User user = User.createUser(userRequest.getId(),userRequest.getPassword(), userRequest.getName(), userRequest.getProfileFile().getOriginalFilename());
-        userRepository.add(user);
+        userRepository.save(user);
 
     }
 
     public void update(UserRequest userRequest){
-        User user = userRepository.getUser(userRequest.getId());
+        User user = userRepository.findById(userRequest.getId()).orElseThrow(() -> new UserNotFoundException(userRequest.getId()));
         String uploadPath =commonPropertiesConfig.getUploadPath();
         MultipartFile file = userRequest.getProfileFile();
         if( !file.isEmpty() ){
@@ -83,7 +85,7 @@ public class UserService {
     }
 
     public void delete(String id){
-        userRepository.remove(id);
+        userRepository.deleteById(id);
     }
 
 }

@@ -3,7 +3,7 @@ package com.nhnacademy.board.board.controller;
 import com.nhnacademy.board.entity.Post;
 import com.nhnacademy.board.board.domain.PostRequest;
 import com.nhnacademy.board.board.service.BoardService;
-import com.nhnacademy.board.common.pagenation.Page;
+import org.springframework.data.domain.Page;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +35,8 @@ public class BoardController {
                         @RequestParam(name = "size", defaultValue = "10") int size,
                         String id) {
         Post post = boardService.getPost(Long.valueOf(id));
-        PostRequest postRequest = new PostRequest(post.getId(), post.getTitle(), post.getContent()
-                , post.getWriterUserId(), post.getWriteTime(), post.getViewCount());
+        PostRequest postRequest = new PostRequest(post.getPk().getId(), post.getTitle(), post.getContent()
+                , post.getPk().getWriterUserId(), post.getWriteTime(), post.getViewCount());
         model.addAttribute("postRequest", postRequest);
         model.addAttribute("page", page);
         model.addAttribute("size", size);
@@ -49,8 +49,8 @@ public class BoardController {
                          @RequestParam(name = "size", defaultValue = "10")int size ,
                          String id) {
         Post post = boardService.getPost(Long.valueOf(id));
-        PostRequest postRequest = new PostRequest(post.getId(), post.getTitle(), post.getContent()
-                , post.getWriterUserId(), post.getWriteTime(), post.getViewCount());
+        PostRequest postRequest = new PostRequest(post.getPk().getId(), post.getTitle(), post.getContent()
+                , post.getPk().getWriterUserId(), post.getWriteTime(), post.getViewCount());
         model.addAttribute("postRequest", postRequest);
         model.addAttribute("action", "/board/modify");
         model.addAttribute("page", page);

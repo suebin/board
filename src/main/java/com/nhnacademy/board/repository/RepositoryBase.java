@@ -1,4 +1,4 @@
-package com.nhnacademy.board.board.repository;
+package com.nhnacademy.board.repository;
 
 // marker interface
 public interface RepositoryBase {
