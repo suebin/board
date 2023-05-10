@@ -3,6 +3,7 @@ package com.nhnacademy.board.login.controller;
 import com.nhnacademy.board.login.dto.LoginRequest;
 import com.nhnacademy.board.login.service.LoginService;
 import com.nhnacademy.board.entity.User;
+import com.nhnacademy.board.user.domain.Role;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,7 +47,7 @@ public class LoginController {
             HttpSession session = request.getSession(true);
             session.setAttribute("user", user);
 
-            if(user.getRole().equals(User.Role.ADMIN)) {
+            if(user.getRole().equals(Role.ADMIN)) {
                 return "redirect:/admin/users/";
             }
             return "redirect:/board/list/";
