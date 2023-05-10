@@ -22,11 +22,11 @@ public class UserRequest {
     private String name;
 
     private String profileFileName;
-    private User.Role role;
+    private Role role;
 
     private MultipartFile profileFile;
 
-    public UserRequest(String id, String password, String name, String profileFileName, User.Role role) {
+    public UserRequest(String id, String password, String name, String profileFileName, Role role) {
         this.id = id;
         this.password = password;
         this.name = name;

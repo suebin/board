@@ -37,10 +37,6 @@ c
 3src/main/webapp/WEB-INF/views/admin/users/list.html,0/b/0b4830fa7e2c417673b7de78d72b7cf8a7a6ec84
 n
 >src/main/java/com/nhnacademy/board/init/WebAppInitializer.java,a/8/a8e65cea6bfe8485a7c3ce5f7fba345bc80715dc
-x
-Hsrc/main/java/com/nhnacademy/board/login/controller/LoginController.java,0/3/03868181d98c1cfc933f9e778ebced9adb5e5dd3
-o
-?src/main/java/com/nhnacademy/board/user/domain/UserRequest.java,b/d/bdb6aed884930aa0acf19956b34537af781f6261
 q
 Asrc/main/java/com/nhnacademy/board/repository/RepositoryBase.java,1/0/1009aa3a5bf10815dbabdfa8efb97a1606922a20
 q
