@@ -3,6 +3,7 @@ package com.nhnacademy.board.board.controller;
 import com.nhnacademy.board.entity.Post;
 import com.nhnacademy.board.board.domain.PostRequest;
 import com.nhnacademy.board.board.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 @SessionAttributes("user")
 @RequestMapping("/board")
 @AllArgsConstructor
+@Slf4j
 public class BoardController {
     private final BoardService boardService;
 
@@ -25,6 +27,10 @@ public class BoardController {
                         @RequestParam(name = "size", defaultValue = "10") int size) {
         Page<Post> postPage = boardService.getPostList(page, size);
         model.addAttribute("postPage", postPage);
+
+        for (Post post : postPage) {
+            log.info(post.toString());
+        }
 
         return "post/list";
     }

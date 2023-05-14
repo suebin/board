@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -34,9 +36,8 @@ public class UserService {
         return user;
     }
 
-    public Page<User> getUserList(int page, int size){
-        PageRequest pageRequest = PageRequest.of(page, size);
-        return userRepository.findAll(pageRequest);
+    public Page<User> getUserList(Pageable pageable){
+        return userRepository.findAll(pageable);
     }
 
     public String getProfileImagePath(String id){

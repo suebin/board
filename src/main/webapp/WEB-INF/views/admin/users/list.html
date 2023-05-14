@@ -16,7 +16,6 @@
     <caption></caption>
     <thead>
         <tr>
-            <th th:text="#{No}"></th>
             <th th:text="#{ID}"></th>
             <th th:text="#{Name}"></th>
             <th th:text="#{ViewUser}"></th>
@@ -24,21 +23,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr th:each=" item, i : ${userPage.list}" >
-            <td th:text="${userPage.totalCount - (userPage.pageNumber-1)*userPage.pageSize -i.index }"></td>
+        <tr th:each=" item, i : ${userPage.getContent}" >
             <td th:text="${item.id}"></td>
             <td th:text="${item.name}"></td>
             <td>
-                <a th:href="@{./view(page=${userPage.pageNumber}, size=${userPage.pageSize}, id=${item.id})}"><span th:text="#{View}"></span></a>
+                <a th:href="@{./view(page=${userPage.getNumber}, size=${userPage.getSize}, id=${item.id})}"><span th:text="#{View}"></span></a>
             </td>
             <td th:text="${item.createdAt}"></td>
         </tr>
     </tbody>
 </table>
 <div class="page">
-    <a th:href="@{./(page=${userPage.pageNumber-1} , size=${userPage.pageSize}  )}" th:if="${userPage.pageNumber gt 1 }" th:text="#{Prev}"></a>
-    <span th:text="${userPage.pageNumber}" />/<span th:text="${userPage.totalPageCount}"/>
-    <a th:href="@{./(page=${userPage.pageNumber+1} , size=${userPage.pageSize}  )}" th:if="${userPage.pageNumber lt userPage.totalPageCount}" th:text="#{Next}"></a>
+    <a th:href="@{./(page=${userPage.getNumber-1} , size=${userPage.getSize}  )}" th:if="${userPage.getNumber gt 0 }" th:text="#{Prev}"></a>
+    <span th:text="${userPage.getNumber+1}" />/<span th:text="${userPage.getTotalPages}"/>
+    <a th:href="@{./(page=${userPage.getNumber+1} , size=${userPage.getSize}  )}" th:if="${userPage.getNumber lt userPage.getTotalPages - 1}" th:text="#{Next}"></a>
 </div>
 </body>
 </html>

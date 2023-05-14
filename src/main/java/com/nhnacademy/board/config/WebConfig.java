@@ -8,6 +8,7 @@ import org.springframework.context.MessageSourceAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -23,6 +24,7 @@ import java.util.Locale;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"com.nhnacademy.board.**.controller"})
+@EnableSpringDataWebSupport
 public class WebConfig implements WebMvcConfigurer, MessageSourceAware, ApplicationContextAware {
 
     private MessageSource messageSource;

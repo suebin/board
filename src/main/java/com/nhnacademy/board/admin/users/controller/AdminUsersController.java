@@ -5,12 +5,16 @@ import com.nhnacademy.board.user.domain.UserRequest;
 import com.nhnacademy.board.user.servlce.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/users")
@@ -23,10 +27,9 @@ public class AdminUsersController {
     }
 
     @GetMapping(value = {"/list", "/",""})
-    public String users(Model model, @RequestParam(name = "page", defaultValue = "1") int page, @RequestParam(name = "size", defaultValue = "10")int size){
-        Page<User> userPage =  userService.getUserList(page,size);
+    public String users(Model model, @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+        Page<User> userPage =  userService.getUserList(pageable);
         model.addAttribute("userPage", userPage);
-
         return "admin/users/list";
     }
 

@@ -39,15 +39,15 @@ public class EntityManagerTest {
 
     @Test
     void test2() {
-        User user1 = new User();
-        user1.setId("user1");
-        user1.setPassword("1234");
-        user1.setCreatedAt(LocalDateTime.now());
+        User user12 = new User();
+        user12.setId("user12");
+        user12.setPassword("1234");
+        user12.setCreatedAt(LocalDateTime.now());
 
-        entityManager.persist(user1);
+        entityManager.persist(user12);
 
-        User user2 = entityManager.find(User.class, "user1");
-        assertThat(user2).isEqualTo(user1);
+        User user2 = entityManager.find(User.class, "user12");
+        assertThat(user2).isEqualTo(user12);
 
         user2.setPassword("4321");
         entityManager.flush();
@@ -55,16 +55,16 @@ public class EntityManagerTest {
 
     @Test
     void test3() {
-        User user1 = new User();
-        user1.setId("user1");
-        user1.setPassword("1234");
-        user1.setCreatedAt(LocalDateTime.now());
+        User user13 = new User();
+        user13.setId("user13");
+        user13.setPassword("1234");
+        user13.setCreatedAt(LocalDateTime.now());
 
-        entityManager.persist(user1);
+        entityManager.persist(user13);
 
         entityManager.close();
 
-        User user2 = entityManager.find(User.class, "user1");
-        assertThat(user2).isEqualTo(user1);
+        User user2 = entityManager.find(User.class, "user13");
+        assertThat(user2).isEqualTo(user13);
     }
 }

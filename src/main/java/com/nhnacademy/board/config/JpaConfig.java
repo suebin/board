@@ -43,6 +43,7 @@ public class JpaConfig {
         jpaProperties.setProperty("hibernate.use_sql_comments", "true");
         jpaProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
         jpaProperties.setProperty("hibernate.temp.use_jdbc_metadata_defaults", "false");
+        jpaProperties.setProperty("hibernate.highlight_sql", "true");
 
         return jpaProperties;
     }

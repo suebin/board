@@ -38,15 +38,15 @@ public class BoardRepositoryTest {
 
     @Test
     void test1() {
-        User user1 = User.createUser("user1", "1234", "유저1", "user1.png");
-        userRepository.save(user1);
+        User user12 = User.createUser("user12", "1234", "유저12", "user.png");
+        userRepository.save(user12);
 
         Post post = new Post();
 
         Post.Pk pk = new Post.Pk();
         pk.setId(1L);
         post.setPk(pk);
-        post.setUser(user1);
+        post.setUser(user12);
 
         post.setTitle("title");
         post.setWriteTime(LocalDateTime.now());

@@ -36,11 +36,11 @@ public class UserRepositoryTest {
 
     @Test
     void test() {
-        User user1 = User.createUser("user1", "1234", "유저1", "user1.png");
-        userRepository.save(user1);
-        User user = userRepository.findById(user1.getId()).orElseThrow(() -> new UserNotFoundException(user1.getId()));
+        User user12 = User.createUser("user12", "1234", "유저12", "user.png");
+        userRepository.save(user12);
+        User user = userRepository.findById(user12.getId()).orElseThrow(() -> new UserNotFoundException(user12.getId()));
 
-        assertThat(user).isEqualTo(user1);
-        assertThat(user.getId()).isEqualTo(user1.getId());
+        assertThat(user).isEqualTo(user12);
+        assertThat(user.getId()).isEqualTo(user12.getId());
     }
 }
